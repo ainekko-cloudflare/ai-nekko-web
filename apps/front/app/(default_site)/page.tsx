@@ -1,3 +1,9 @@
+import CatAnim from '@/components/home/catAnim'
+
 export default function Page() {
-  return <main>Ai nekko</main>;
+  return (
+    <main>
+      <CatAnim />
+    </main>
+  );
 }

@@ -30,5 +30,16 @@ export default {
       'helvetica': ['helvetica']
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ matchUtilities }: { matchUtilities: (utilities: Record<string, (value: string) => Record<string, string>>, options?: { values?: Record<string, string> }) => void }) {
+      matchUtilities(
+        {
+          "word-spacing": (value: string) => ({
+            wordSpacing: value,
+          }),
+        },
+        { values: {} } // Permette valori arbitrari
+      );
+    },
+  ],
 } satisfies Config;
