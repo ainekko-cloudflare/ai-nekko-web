@@ -18,17 +18,6 @@ export default function CatAnimText1({scrollerContainerRef, firstAnimComplete, c
         if(firstAnimComplete && scrollerContainerRef){
             const tl = gsap.timeline({paused: true})
                 .to(scrollerContainerRef.current, {overflowY: 'hidden'})
-                .fromTo(['.cat-text-container-1 .arrows', '.cat-text-container-1 .googles', '.cat-text-container-1 .graffiti'], {
-                    opacity: 0,
-                    y: '35px'
-                }, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.3,
-                    stagger: {
-                        each: 0.02
-                    }
-                })
                 .fromTo(['.cat-text-container-1 .text1', '.cat-text-container-1 .text2', '.cat-text-container-1 .error', '.cat-text-container-1 .errorMobile'], {
                     opacity: 0,
                     y: '35px'
@@ -38,6 +27,17 @@ export default function CatAnimText1({scrollerContainerRef, firstAnimComplete, c
                     duration: 0.2,
                     stagger: {
                         each: 0.1
+                    }
+                })
+                .fromTo(['.cat-text-container-1 .arrows', '.cat-text-container-1 .googles', '.cat-text-container-1 .graffiti'], {
+                    opacity: 0,
+                    y: '35px'
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.3,
+                    stagger: {
+                        each: 0.02
                     }
                 })
                 .to(scrollerContainerRef.current, {overflowY: 'scroll'})

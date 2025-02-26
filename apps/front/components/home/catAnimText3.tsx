@@ -20,17 +20,6 @@ export default function CatAnimText3({scrollerContainerRef, animContainerRef, fi
             const {width: prevWidth, height: prevHeight } = animContainerRef.current.getBoundingClientRect();
             const tl = gsap.timeline({paused: true})
                 .to(scrollerContainerRef.current, {overflowY: 'hidden'})
-                .fromTo(['.cat-text-container-3 .arrows', '.cat-text-container-3 .googles', '.cat-text-container-3 .circles', '.cat-text-container-3 .graffiti'], {
-                    opacity: 0,
-                    y: '35px'
-                }, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.3,
-                    stagger: {
-                        each: 0.02
-                    }
-                })
                 .fromTo(['.cat-text-container-3 .text1', '.cat-text-container-3 .text2', '.cat-text-container-3 .error', '.cat-text-container-3 .errorMobile'], {
                     opacity: 0,
                     y: '35px'
@@ -40,6 +29,17 @@ export default function CatAnimText3({scrollerContainerRef, animContainerRef, fi
                     duration: 0.2,
                     stagger: {
                         each: 0.05
+                    }
+                })
+                .fromTo(['.cat-text-container-3 .arrows', '.cat-text-container-3 .googles', '.cat-text-container-3 .circles', '.cat-text-container-3 .graffiti'], {
+                    opacity: 0,
+                    y: '35px'
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.3,
+                    stagger: {
+                        each: 0.02
                     }
                 })
                 .to(scrollerContainerRef.current, {overflowY: 'scroll'})
