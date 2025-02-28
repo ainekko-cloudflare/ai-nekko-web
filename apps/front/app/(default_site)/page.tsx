@@ -1,9 +1,13 @@
-import CatAnim from '@/components/home/catAnim'
+import Hero from '@/components/home/hero/main'
+import PaperDiscussions from '@/components/home/paperDiscussions/main'
 
 export default function Page() {
   return (
     <main>
-      <CatAnim />
+      <div className='pin-section'>
+        <Hero />
+        <PaperDiscussions />
+      </div>
     </main>
   );
 }

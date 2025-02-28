@@ -1,5 +1,3 @@
-import { RefObject } from 'react'
-
 import IMGCat from '@/public/imgs/comeBuildWithUs/cat.webp'
 import IMGError from '@/public/imgs/comeBuildWithUs/error.webp'
 import IMGPunchCard from '@/public/imgs/comeBuildWithUs/punchCard.webp'
@@ -16,11 +14,11 @@ import Link from 'next/link'
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ComeBuildWithUs({scrollerContainerRef, firstAnimComplete, className}: {scrollerContainerRef?: RefObject<HTMLDivElement>, firstAnimComplete?: boolean, className?: string}) {
+export default function ComeBuildWithUs({firstAnimComplete}: {firstAnimComplete?: boolean}) {
     useGSAP(() => {
-        if(firstAnimComplete && scrollerContainerRef){
+        if(firstAnimComplete){
             const tl = gsap.timeline({paused: true})
-                .to(scrollerContainerRef.current, {overflowY: 'hidden'})
+                .to('.scroller-container', {overflowY: 'hidden'})
                 .fromTo(['.come-build-with-us-container .cat'], {
                     opacity: 0,
                     y: '-35px'
@@ -59,7 +57,7 @@ export default function ComeBuildWithUs({scrollerContainerRef, firstAnimComplete
                     y: 0,
                     duration: 0.2
                 })
-                .to(scrollerContainerRef.current, {overflowY: 'scroll'})
+                .to('.scroller-container', {overflowY: 'scroll'})
 
             gsap.to('.come-build-with-us-container .sticker', {
                 rotation: 360,
@@ -73,7 +71,7 @@ export default function ComeBuildWithUs({scrollerContainerRef, firstAnimComplete
                 start: 'top+=30vw center',
                 end: 'top+=30vw center',
                 id: 'trigger-4',
-                scroller: scrollerContainerRef.current,
+                scroller: '.scroller-container',
                 onEnter: () => {
                     gsap.fromTo('.come-build-with-us-container', {
                         opacity: 0,
@@ -84,8 +82,10 @@ export default function ComeBuildWithUs({scrollerContainerRef, firstAnimComplete
                         duration: 0.3
                     })
                     tl.restart(true)
+                    .set('body', {overflowY: 'scroll'})
                 },
                 onEnterBack: () => {
+                    gsap.set('body', {overflowY: 'hidden'})
                     gsap.fromTo('.come-build-with-us-container', {
                         opacity: 1, 
                         y: 0
@@ -94,12 +94,14 @@ export default function ComeBuildWithUs({scrollerContainerRef, firstAnimComplete
                         y: '50px',
                         duration: 0.3
                     })
+                    gsap.set('body', {overflowY: 'scroll'})
                 }
             })
         }
-    }, [firstAnimComplete, scrollerContainerRef])
+    }, [firstAnimComplete])
+
     return (
-        <div className={`come-build-with-us-container relative flex flex-col w-full h-full font-dharma-gothic-e font-black uppercase justify-center items-center text-center ${className}`}>
+        <div className='come-build-with-us-container fixed top-0 pointer-events-none flex flex-col w-full h-full font-dharma-gothic-e font-black uppercase justify-center items-center text-center'>
             <div className='punchCard absolute z-[0] opacity-0
                 w-[16.1rem] sm:w-[17.4rem] sm:md:w-[35.4rem] md:w-[40.4rem] lg:w-[66.5rem] lg:xl:w-[66.5rem] xl:2xl:w-[66.5rem]    
                 top-[calc(50%-5.5rem)] sm:top-[calc(50%-5rem)] md:top-[calc(50%-7.6rem)] lg:top-[calc(50%-12.5rem)] xl:top-[calc(50%-12.5rem)] 2xl:top-[calc(50%-12.5rem)]
