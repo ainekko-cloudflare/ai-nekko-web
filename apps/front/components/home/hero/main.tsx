@@ -44,7 +44,7 @@ export default function CatAnim() {
     }, [firstAnimComplete, skipAnim])
 
     useGSAP(() => {
-        if(skipAnim){
+        if(skipAnim || window.scrollY > 0){
             gsap.set(['.trigger-1', '.trigger-2', '.trigger-3'],{
                 display: 'none'
             })
@@ -182,7 +182,7 @@ export default function CatAnim() {
                     </div>
                 </div>
             </div>
-            <div ref={scrollerContainerRef} className='scroller-container relative w-full h-full snap-y snap-mandatory'>
+            <div ref={scrollerContainerRef} className='scroller-container relative w-full h-full snap-y snap-mandatory overflow-x-hidden'>
                 <div className='trigger-1 w-full h-full flex flex-col justify-center items-center snap-center'>
                     <CatAnimText1 firstAnimComplete={firstAnimComplete} />
                 </div>
