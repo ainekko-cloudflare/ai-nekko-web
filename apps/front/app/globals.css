@@ -153,3 +153,7 @@ ol {
 .faqsModal input:hover, input:focus{
   border-color: #F9A03F !important;
 }
+
+.scrollbar-width-none{
+  scrollbar-width: none;
+}

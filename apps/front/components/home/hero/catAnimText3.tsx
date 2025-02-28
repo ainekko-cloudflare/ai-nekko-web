@@ -1,5 +1,3 @@
-import { RefObject } from 'react'
-
 import IMGArrows from '@/public/imgs/hero/arrows.webp'
 import IMGCircles from '@/public/imgs/hero/circles.webp'
 import IMGError from '@/public/imgs/hero/error.webp'
@@ -14,12 +12,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function CatAnimText3({scrollerContainerRef, animContainerRef, firstAnimComplete, className}: {scrollerContainerRef?: RefObject<HTMLDivElement>, animContainerRef?: RefObject<HTMLDivElement>, firstAnimComplete?: boolean, className?: string}) {
+export default function CatAnimText3({firstAnimComplete}: {firstAnimComplete?: boolean}) {
     useGSAP(() => {
-        if(firstAnimComplete && scrollerContainerRef && animContainerRef && animContainerRef.current){
-            const {width: prevWidth, height: prevHeight } = animContainerRef.current.getBoundingClientRect();
+        if(firstAnimComplete){
+            let prevWidth = 0
+            let prevHeight = 0
+            const animContainer = document.querySelector('.anim-container');
+            if(animContainer){
+                prevWidth = animContainer.getBoundingClientRect().width
+                prevHeight = animContainer.getBoundingClientRect().height
+            }
             const tl = gsap.timeline({paused: true})
-                .to(scrollerContainerRef.current, {overflowY: 'hidden'})
+                .to('.scroller-container', {overflowY: 'hidden'})
                 .fromTo(['.cat-text-container-3 .text1', '.cat-text-container-3 .text2', '.cat-text-container-3 .error', '.cat-text-container-3 .errorMobile'], {
                     opacity: 0,
                     y: '35px'
@@ -42,19 +46,19 @@ export default function CatAnimText3({scrollerContainerRef, animContainerRef, fi
                         each: 0.02
                     }
                 })
-                .to(scrollerContainerRef.current, {overflowY: 'scroll'})
+                .to('.scroller-container', {overflowY: 'scroll'})
             
             const tl2 = gsap.timeline({paused: true})
-                .to(scrollerContainerRef.current, {overflowY: 'hidden'})
+                .to('.scroller-container', {overflowY: 'hidden'})
                 .to('.cat-text-container-3', {scale: 1, opacity: 1, delay: 0.3, duration: 0.5})
-                .to(scrollerContainerRef.current, {overflowY: 'scroll'})
+                .to('.scroller-container', {overflowY: 'scroll'})
                 
             ScrollTrigger.create({
                 trigger: '.trigger-3',
                 start: 'top+=30vw center',
                 end: 'bottom-=30vw center',
                 id: 'trigger-3',
-                scroller: scrollerContainerRef.current,
+                scroller: '.scroller-container',
                 onEnter: () => {
                     gsap.fromTo('.cat-text-container-3', {
                         opacity: 0,
@@ -75,10 +79,10 @@ export default function CatAnimText3({scrollerContainerRef, animContainerRef, fi
                         scale: 1.25,
                         duration: 0.3
                     })
-                    gsap.to(animContainerRef.current, { width: `${prevWidth*5}px`, height: `${prevHeight*5}px`, duration: 1});
+                    gsap.to('.anim-container', { width: `${prevWidth*5}px`, height: `${prevHeight*5}px`, duration: 1});
                 },
                 onEnterBack: () => {
-                    gsap.to(animContainerRef.current, { width: prevWidth, height: prevHeight, duration: 1});
+                    gsap.to('.anim-container', { width: prevWidth, height: prevHeight, duration: 1});
                     tl2.restart(true);
                 },
                 onLeaveBack: () => {
@@ -93,9 +97,9 @@ export default function CatAnimText3({scrollerContainerRef, animContainerRef, fi
                 }
             })
         }
-    }, [firstAnimComplete, scrollerContainerRef, animContainerRef])
+    }, [firstAnimComplete])
     return (
-        <div className={`cat-text-container-3 relative flex flex-col w-[100rem] h-full font-dharma-gothic-e font-black uppercase justify-center items-center text-center ${className}`}>
+        <div className='cat-text-container-3 fixed top-0 pointer-events-none flex flex-col w-[100rem] h-full font-dharma-gothic-e font-black uppercase justify-center items-center text-center'>
             <div className='absolute arrows opacity-0
                 w-[11rem] sm:w-[11rem] md:w-[14.7rem] md:lg:w-[16.7rem] xl:w-[16.7rem] 2xl:w-[16.7rem]
                 top-[calc(50%+7rem)] sm:top-[calc(50%+8rem)] md:top-[calc(50%+7rem)] lg:top-[calc(50%+5.6rem)] xl:top-[calc(50%+5.6rem)] 2xl:top-[calc(50%+5.6rem)]

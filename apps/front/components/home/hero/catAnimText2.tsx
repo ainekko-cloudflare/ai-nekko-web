@@ -1,5 +1,3 @@
-import { RefObject } from 'react'
-
 import IMGArrows from '@/public/imgs/hero/arrows.webp'
 import IMGGraffiti from '@/public/imgs/hero/graffiti_2.webp'
 import IMGError from '@/public/imgs/hero/error.webp'
@@ -13,11 +11,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function CatAnimText2({scrollerContainerRef, firstAnimComplete, className}: {scrollerContainerRef?: RefObject<HTMLDivElement>, firstAnimComplete?: boolean, className?: string}) {
+export default function CatAnimText2({firstAnimComplete}: {firstAnimComplete?: boolean}) {
     useGSAP(() => {
-        if(firstAnimComplete && scrollerContainerRef){
+        if(firstAnimComplete){
             const tl = gsap.timeline({paused: true})
-                .to(scrollerContainerRef.current, {overflowY: 'hidden'})
+                .to('.scroller-container', {overflowY: 'hidden'})
                 .fromTo(['.cat-text-container-2 .text1', '.cat-text-container-2 .text2', '.cat-text-container-2 .error', '.cat-text-container-2 .errorMobile'], {
                     opacity: 0,
                     y: '35px'
@@ -40,14 +38,14 @@ export default function CatAnimText2({scrollerContainerRef, firstAnimComplete, c
                         each: 0.02
                     }
                 })
-                .to(scrollerContainerRef.current, {overflowY: 'scroll'})
+                .to('.scroller-container', {overflowY: 'scroll'})
                 
             ScrollTrigger.create({
                 trigger: '.trigger-2',
                 start: 'top+=30vw center',
                 end: 'bottom-=30vw center',
                 id: 'trigger-2',
-                scroller: scrollerContainerRef.current,
+                scroller: '.scroller-container',
                 onEnter: () => {
                     gsap.fromTo('.cat-text-container-2', {
                         opacity: 0,
@@ -92,9 +90,9 @@ export default function CatAnimText2({scrollerContainerRef, firstAnimComplete, c
                 }
             })
         }
-    }, [firstAnimComplete, scrollerContainerRef])
+    }, [firstAnimComplete])
     return (
-        <div className={`cat-text-container-2 relative flex flex-col w-[100rem] h-full font-dharma-gothic-e font-black uppercase justify-center items-center text-center ${className}`}>
+        <div className='cat-text-container-2 fixed top-0 pointer-events-none flex flex-col w-[100rem] h-full font-dharma-gothic-e font-black uppercase justify-center items-center text-center'>
             <div className='arrows absolute opacity-0
                 w-[11rem] sm:w-[11rem] md:w-[14.7rem] md:lg:w-[16.7rem] xl:w-[16.7rem] 2xl:w-[16.7rem]
                 top-[calc(50%+5.2rem)] sm:top-[calc(50%+6rem)] md:top-[calc(50%+7rem)] lg:top-[calc(50%+6rem)] xl:top-[calc(50%+6rem)] 2xl:top-[calc(50%+6rem)]

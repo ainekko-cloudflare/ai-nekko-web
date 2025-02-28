@@ -1,5 +1,3 @@
-import { RefObject } from 'react'
-
 import IMGGoogles from '@/public/imgs/hero/googles.webp'
 import IMGArrows from '@/public/imgs/hero/arrows.webp'
 import IMGGraffiti from '@/public/imgs/hero/graffiti_1.webp'
@@ -13,11 +11,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function CatAnimText1({scrollerContainerRef, firstAnimComplete, className}: {scrollerContainerRef?: RefObject<HTMLDivElement>, firstAnimComplete?: boolean, className?: string}) {
+export default function CatAnimText1({firstAnimComplete}: {firstAnimComplete?: boolean}) {
     useGSAP(() => {
-        if(firstAnimComplete && scrollerContainerRef){
+        if(firstAnimComplete){
             const tl = gsap.timeline({paused: true})
-                .to(scrollerContainerRef.current, {overflowY: 'hidden'})
+                .to('.scroller-container', {overflowY: 'hidden'})
                 .fromTo(['.cat-text-container-1 .text1', '.cat-text-container-1 .text2', '.cat-text-container-1 .error', '.cat-text-container-1 .errorMobile'], {
                     opacity: 0,
                     y: '35px'
@@ -40,7 +38,7 @@ export default function CatAnimText1({scrollerContainerRef, firstAnimComplete, c
                         each: 0.02
                     }
                 })
-                .to(scrollerContainerRef.current, {overflowY: 'scroll'})
+                .to('.scroller-container', {overflowY: 'scroll'})
             tl.play();
 
             ScrollTrigger.create({
@@ -48,7 +46,7 @@ export default function CatAnimText1({scrollerContainerRef, firstAnimComplete, c
                 start: 'bottom-=30vw center',
                 end: 'bottom-=30vw center',
                 id: 'trigger-1',
-                scroller: scrollerContainerRef.current,
+                scroller: '.scroller-container',
                 onEnter: () => {
                     gsap.fromTo('.cat-text-container-1', {
                         opacity: 1,
@@ -65,9 +63,9 @@ export default function CatAnimText1({scrollerContainerRef, firstAnimComplete, c
                 }
             })
         }
-    }, [firstAnimComplete, scrollerContainerRef])
+    }, [firstAnimComplete])
     return (
-        <div className={`cat-text-container-1 relative flex flex-col w-[100rem] h-full font-dharma-gothic-e font-black uppercase justify-center items-center text-center ${className}`}>
+        <div className='cat-text-container-1 fixed top-0 pointer-events-none flex flex-col w-[100rem] h-full font-dharma-gothic-e font-black uppercase justify-center items-center text-center'>
             <div className='arrows absolute opacity-0
                 w-[11rem] sm:w-[11rem] md:w-[11rem] lg:w-[16.7rem] xl:w-[16.7rem] 2xl:w-[16.7rem]
                 top-[calc(50%+6.2rem)] sm:top-[calc(50%+6rem)] md:top-[calc(50%+6rem)] lg:top-[calc(50%+5rem)] xl:top-[calc(50%+5rem)] 2xl:top-[calc(50%+5rem)]
@@ -83,7 +81,7 @@ export default function CatAnimText1({scrollerContainerRef, firstAnimComplete, c
             </div>
             <div className='graffiti absolute opacity-0
                 w-[13rem] sm:w-[15rem] md:w-[15rem] lg:w-[19rem] xl:w-[19rem] 2xl:w-[19rem]
-                top-[39.8rem] sm:top-[39.5rem] md:top-[39.5rem] lg:top-[38.3rem] xl:top-[38.3rem] 2xl:top-[38.3rem]
+                top-[calc(50%-1.5rem)] sm:top-[calc(50%-3rem)] md:top-[calc(50%-3rem)] lg:top-[calc(50%-4rem)] xl:top-[calc(50%-4rem)] 2xl:top-[calc(50%-4rem)]
                 right-[32rem] sm:right-[23.5rem] md:right-[23.5rem] lg:right-[16.5rem] xl:right-[16.8rem] 2xl:right-[16.5rem]
             '>
                 <ImageWrapper src={IMGGraffiti.src} alt='Graffiti' />
