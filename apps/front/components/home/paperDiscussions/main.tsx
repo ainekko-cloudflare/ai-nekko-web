@@ -56,7 +56,7 @@ export default function Main() {
     return (
         <div className='relative w-full h-auto flex'>
             <div className='relative flex flex-col h-full border-2 border-black
-                min-w-[32.7rem] sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full
+                w-[32.7rem] sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full
                 my-[11.2rem] sm:my-[16.6rem] md:my-[16.6rem] lg:my-[16.6rem] xl:my-[16.6rem] 2xl:my-[16.6rem]
                 mx-[2.4rem] sm:mx-[6rem] md:mx-[4.2rem] lg:mx-[11.2rem] xl:mx-[11.2rem] 2xl:mx-[11.2rem] 
                 p-[2.4rem] sm:p-[5.6rem] md:p-[5.6rem] lg:p-[5.6rem] xl:p-[5.6rem] 2xl:p-[5.6rem]
@@ -74,7 +74,7 @@ export default function Main() {
                 '>
                     <div className='relative paper-slides-container w-full h-full grid grid-flow-row'>
                         {slides.map(el => (
-                            <div key={el.id} className={`paper-slide-${el.id} relative w-full flex flex-col flex-nowrap 
+                            <div key={el.id} className={`paper-slide-${el.id} relative w-fit flex flex-col flex-nowrap 
                                 sm:justify-center md:justify-center lg:justify-center xl:justify-end 2xl:justify-center
                                 h-[18.1rem] sm:h-[16rem] md:h-[26rem] lg:h-[26rem] xl:h-[26rem] 2xl:h-[30rem]
                             `}>
