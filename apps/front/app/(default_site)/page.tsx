@@ -1,6 +1,7 @@
 import Hero from '@/components/home/hero/main'
 import PaperDiscussions from '@/components/home/paperDiscussions/main'
 import AiAsASystem from '@/components/home/aiAsASystem/main'
+import Marquee from '@/components/home/marquee/main'
 
 export default function Page() {
   return (
@@ -8,8 +9,9 @@ export default function Page() {
       <div className='pin-section'>
         <Hero />
         <PaperDiscussions />
-        <AiAsASystem />
       </div>
+      <AiAsASystem />
+      <Marquee />
     </main>
   );
 }
