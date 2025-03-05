@@ -54,9 +54,9 @@ export default function Main() {
     }, []);
 
     return (
-        <div className='relative w-full h-auto flex'>
+        <div className='relative w-full h-auto flex justify-center'>
             <div className='relative flex flex-col h-full border-2 border-black
-                w-[32.7rem] sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full
+                w-full xs:w-[40rem] sm:w-full md:w-full lg:w-full xl:w-full 2xl:w-full
                 my-[11.2rem] sm:my-[16.6rem] md:my-[16.6rem] lg:my-[16.6rem] xl:my-[16.6rem] 2xl:my-[16.6rem]
                 mx-[2.4rem] sm:mx-[6rem] md:mx-[4.2rem] lg:mx-[11.2rem] xl:mx-[11.2rem] 2xl:mx-[11.2rem] 
                 p-[2.4rem] sm:p-[5.6rem] md:p-[5.6rem] lg:p-[5.6rem] xl:p-[5.6rem] 2xl:p-[5.6rem]
