@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Host Grotesk';
+  src: url('../public/fonts/HostGrotesk-VariableFont_wght.ttf');
+}
+@font-face {
+  font-family:'dharma-gothic-e';
+  src:url('https://use.typekit.net/af/0ff71d/00000000000000007735c16a/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3') format('woff2'),url('https://use.typekit.net/af/0ff71d/00000000000000007735c16a/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3') format('woff'),url('https://use.typekit.net/af/0ff71d/00000000000000007735c16a/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3') format('opentype');
+  font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+  
+@font-face {
+  font-family:'dharma-gothic-e';
+  src:url('https://use.typekit.net/af/e74541/00000000000000007735c16d/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3') format('woff2'),url('https://use.typekit.net/af/e74541/00000000000000007735c16d/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3') format('woff'),url('https://use.typekit.net/af/e74541/00000000000000007735c16d/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3') format('opentype');
+  font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+  
+@font-face {
+  font-family:'dharma-gothic-e';
+  src:url('https://use.typekit.net/af/f02426/00000000000000007735c175/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3') format('woff2'),url('https://use.typekit.net/af/f02426/00000000000000007735c175/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3') format('woff'),url('https://use.typekit.net/af/f02426/00000000000000007735c175/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n9&v=3') format('opentype');
+  font-display:auto;font-style:normal;font-weight:900;font-stretch:normal;
+}
+
+:root {
+  --sand: #F6EFE4;
+  --orange: #F9A03F;
+
+  font-size: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: black;
+  background: var(--sand);
+  font-family: 'dharma-gothic-e', 'Host Grotesk', Helvetica, sans-serif;
+}
+
+ul {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+
+@media (min-width: 431px) {
+  ul li {
+    margin-left: 2rem;
+  }
+
+  ol li {
+    margin-left: 2vw;
+  }
+}
+
+@media (min-width: 431px) {
+  h2 {
+    text-transform: uppercase;
+    font-size: 3.34vw;
+    font-weight: 900;
+    line-height: 2.78vw;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    font-size: 2.795vw;
+    font-weight: 900;
+    line-height: 2.295vw;
+  }
+}
+
+@media (max-width: 430px) {
+  ul li {
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  ol li {
+    margin-left: 5.5vw;
+  }
+  h2 {
+    text-transform: uppercase;
+    font-size: 10.67vw;
+    font-weight: 900;
+    line-height: 8.8vw;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    font-size: 8.55vw;
+    font-weight: 900;
+    line-height: 6.95vw;
+  }
+}
+
+.testimonials-pagination-bullet {
+  width: 0.95vw;
+  height: 0.95vw;
+  background-color: transparent;
+  border: 2px solid white;
+  opacity: 1;
+  border-radius: 1.6vw;
+}
+.testimonials-pagination-bullet-active {
+  width: 0.95vw;
+  height: 0.95vw;
+  background-color: white;
+  opacity: 1;
+  border-radius: 1.6vw;
+}
+
+.testimonials-pagination-mobile-bullet {
+  width: 3.5vw;
+  height: 3.5vw;
+  background-color: transparent;
+  border: 2px solid white;
+  opacity: 1;
+  border-radius: 6.15vw;
+}
+.testimonials-pagination-bullet-mobile-active {
+  width: 3.5vw;
+  height: 3.5vw;
+  background-color: white;
+  opacity: 1;
+  border-radius: 6.15vw;
+}
+
+.inTheNews-pagination-bullet {
+  width: 0.95vw;
+  height: 0.95vw;
+  background-color: transparent;
+  border: 2px solid black;
+  opacity: 1;
+  border-radius: 1.6vw;
+}
+.inTheNews-pagination-bullet-active {
+  width: 0.95vw;
+  height: 0.95vw;
+  background-color: black;
+  opacity: 1;
+  border-radius: 1.6vw;
+}
+
+.faqsModal input:hover, input:focus{
+  border-color: #F9A03F !important;
+}
+
+.scrollbar-width-none{
+  scrollbar-width: none;
+}
